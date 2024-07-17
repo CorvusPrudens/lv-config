@@ -30,7 +30,7 @@ require("lazy").setup({
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = { enabled = true, notify = false }, -- automatically check for plugin updates
   performance = {
     rtp = {
       -- disable some rtp plugins
@@ -47,3 +47,18 @@ require("lazy").setup({
     },
   },
 })
+
+-- local luasnip = require("luasnip")
+--
+-- local unlinkgrp = vim.api.nvim_create_augroup("UnlinkSnippetOnModeChange", { clear = true })
+--
+-- vim.api.nvim_create_autocmd("ModeChanged", {
+--   group = unlinkgrp,
+--   pattern = { "s:n", "i:*" },
+--   desc = "Forget the current snippet when leaving the insert mode",
+--   callback = function(evt)
+--     if luasnip.session and luasnip.session.current_nodes[evt.buf] and not luasnip.session.jump_active then
+--       luasnip.unlink_current()
+--     end
+--   end,
+-- })

@@ -11,4 +11,9 @@ return {
     -- Optional dependencies
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+  {
+    "felpafel/inlay-hint.nvim",
+    event = "LspAttach",
+    config = true,
+  },
 }

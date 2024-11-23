@@ -12,6 +12,9 @@ return {
           vim.keymap.set("n", "<leader>dr", function()
             vim.cmd.RustLsp("debuggables")
           end, { desc = "Rust Debuggables", buffer = bufnr })
+          vim.keymap.set("n", "<leader>ce", function()
+            vim.cmd.RustLsp("expandMacro")
+          end, { desc = "Expand macro", buffer = bufnr })
         end,
         default_settings = {
           -- rust-analyzer language server configuration

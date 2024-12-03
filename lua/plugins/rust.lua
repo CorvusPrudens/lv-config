@@ -5,6 +5,9 @@ return {
     ft = { "rust" },
     opts = {
       server = {
+        root_dir = function()
+          return vim.fn.getcwd()
+        end,
         on_attach = function(_, bufnr)
           vim.keymap.set("n", "<leader>cR", function()
             vim.cmd.RustLsp("codeAction")
@@ -38,6 +41,9 @@ return {
                 ["async-recursion"] = { "async_recursion" },
               },
             },
+            files = {
+              excludeDirs = "target",
+            },
           },
         },
       },
@@ -64,8 +70,13 @@ return {
         update_in_insert = true,
       },
       servers = {
-        rust_analyzer = { enable = false },
+        rust_analyzer = {
+          enable = false,
+        },
         bacon_ls = {
+          root_dir = function()
+            return vim.fn.getcwd() -- Force the root directory to the Neovim working directory
+          end,
           enable = true,
           settings = {
             -- locationsFile = ".locations",
